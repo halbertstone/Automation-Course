@@ -11,10 +11,3 @@ chromedriver.log
 
 build/
 adhoc/
-
-
-
-*.mode1v3
-*.mode2v3
-
-build/
