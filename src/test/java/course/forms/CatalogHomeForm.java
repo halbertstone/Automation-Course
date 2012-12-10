@@ -6,7 +6,7 @@ import webdriver.elements.Link;
 
 public class CatalogHomeForm extends BaseForm {
 
-    private Link boardGames = new Link(By.partialLinkText("Настольные игр"), "Board Games");
+    private final Link boardGames = new Link(By.partialLinkText("Настольные игр"), "Board Games");
 
     public CatalogHomeForm() {
         super(By.xpath("//h1[contains(text(), 'Телефоны')]"), "Onliner Catalog Page");
