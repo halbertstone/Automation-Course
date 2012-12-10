@@ -17,21 +17,18 @@ public class LoginTest extends BaseTest {
 
         LogStep();
         LoginForm loginForm = new LoginForm();
-        loginForm.login(user.getLogin(), user.getPassword());
+        loginForm.correctLogin(user.getLogin(), user.getPassword());
 
         LogStep();
-        home.assertIsOpen();
-        home.logout.assertIsPresent();
+        assertEquals("Incorrect user was logged in", user.getLogin(), home.getLoggedUsername());
     }
 
     @Override
     public boolean shouldAnalys() {
-        // TODO Auto-generated method stub
         return false;
     }
 
     @Override
     public void invokeAnalys(Throwable exc, String bodyText) {
-        // TODO Auto-generated method stub
     }
 }
