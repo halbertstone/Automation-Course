@@ -3,11 +3,6 @@
 surefire-reports/
 target/
 chromedriver.log
-
-
 .DS_Store
 *.swp
-*~.nib
 
-build/
-adhoc/
