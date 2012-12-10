@@ -9,7 +9,7 @@ public class HomeForm extends BaseForm {
 
     public Link login = new Link(By.linkText("Войти"), "Login");
     private Label username = new Label(By.xpath("//p[@class='user-name']//a"), "Username");
-    private Link catalog = new Link(By.xpath("//nav//a[text()='Каталог и цены']"), "Catalog");
+    private Link catalog = new Link(By.xpath("//nav//ul[2]//a"), "Catalog");
 
     public HomeForm() {
         super(By.id("g-search-input"), "Onliner Home Page");
