@@ -8,7 +8,7 @@ import webdriver.elements.Link;
 public class HomeForm extends BaseForm {
 
     public Link login = new Link(By.linkText("Войти"), "Login");
-    private Label username = new Label(By.xpath("//p[@class='user-name']//a"), "Username");
+    private Label username = new Label(By.className("user-name"), "Username");
     private Link catalog = new Link(By.xpath("//nav//ul[2]//a"), "Catalog");
 
     public HomeForm() {
