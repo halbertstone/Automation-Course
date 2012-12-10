@@ -3,14 +3,13 @@ package course.forms;
 import org.openqa.selenium.By;
 import webdriver.BaseForm;
 import webdriver.elements.Button;
-import webdriver.elements.Link;
 import webdriver.elements.TextBox;
 
 public class LoginForm extends BaseForm {
 
-    public TextBox username = new TextBox(By.id("username"), "Логин");
-    public TextBox password = new TextBox(By.id("password"), "Пароль");
-    public Link login = new Link(By.xpath("//input[@alt = 'Войти и быть как дома']"), "Войти и быть как дома");
+    private TextBox username = new TextBox(By.id("username"), "Username");
+    private TextBox password = new TextBox(By.id("password"), "Password");
+    private Button login = new Button(By.xpath("//input[@alt = 'Войти и быть как дома']"), "Login");
 
     public LoginForm() {
         super(By.id("username"), "Onliner Login Page");
@@ -18,12 +17,12 @@ public class LoginForm extends BaseForm {
 
     /**
      * This method is used for login with specified credentials
-     * @param username Username
-     * @param password Password
+     * @param userLogin Username
+     * @param userPassword Password
      */
-    public void login(String username, String password) {
-        this.username.type(username);
-        this.password.type(password);
+    public void login(final String userLogin, final String userPassword) {
+        username.type(userLogin);
+        password.type(userPassword);
         login.clickAndWait();
     }
 }

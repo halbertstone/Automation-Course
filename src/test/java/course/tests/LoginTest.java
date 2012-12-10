@@ -1,22 +1,25 @@
 package course.tests;
 
-import course.base.CredentialsHelper;
 import course.forms.HomeForm;
 import course.forms.LoginForm;
 import webdriver.BaseTest;
+import webdriver.controller.UserType;
+import webdriver.controller.UsersController;
 
 public class LoginTest extends BaseTest {
 
+    public UsersController.User user = UsersController.getInstance().getUserByType(UserType.USER);
+
     public void runTest() {
-        logger.step(1);
+        LogStep();
         HomeForm home = new HomeForm();
         home.login.clickAndWait();
 
-        logger.step(2);
+        LogStep();
         LoginForm loginForm = new LoginForm();
-        loginForm.login(CredentialsHelper.getUsername(), CredentialsHelper.getPassword());
+        loginForm.login(user.getLogin(), user.getPassword());
 
-        logger.step(3);
+        LogStep();
         home.assertIsOpen();
         home.logout.assertIsPresent();
     }
