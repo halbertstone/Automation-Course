@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="CourseSuite" verbose="1">
     <test name="Onliner Tests" preserve-order="true">
-        <packages>
-            <package name="course.tests" />
-        </packages>
+        <classes>
+            <class name="course.tests.LoginTest" />
+            <class name="course.tests.CatalogTest" />
+        </classes>
     </test>
 </suite>
