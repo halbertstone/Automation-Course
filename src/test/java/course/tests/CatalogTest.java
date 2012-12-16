@@ -11,7 +11,7 @@ import webdriver.controller.UsersController;
 public class CatalogTest extends BaseTest {
 
     public UsersController.User user = UsersController.getInstance().getUserByType(UserType.USER);
-    public String descriptionRegex = "^Активная.*";
+    public String descriptionRegex = "^активная.*";
 
     public void runTest() {
         LogStep();
@@ -32,6 +32,7 @@ public class CatalogTest extends BaseTest {
         info(String.format("First item name: %1$s", sectionForm.getFirstItemName()));
 
         LogStep();
+        info(String.format("Finding products with description that matches \"%1$s\"", descriptionRegex));
         sectionForm.printRecordsWithDescriptionRegex(descriptionRegex);
     }
 
