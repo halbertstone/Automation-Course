@@ -11,6 +11,7 @@ import webdriver.controller.UsersController;
 public class CatalogTest extends BaseTest {
 
     public UsersController.User user = UsersController.getInstance().getUserByType(UserType.USER);
+    public String descriptionRegex = "^Активная.*";
 
     public void runTest() {
         LogStep();
@@ -28,7 +29,10 @@ public class CatalogTest extends BaseTest {
         BoardGamesSectionForm sectionForm = catalogForm.openBoardGamesSection();
 
         LogStep();
-        logger.info(String.format("First item name: %1$s", sectionForm.getFirstItemName()));
+        info(String.format("First item name: %1$s", sectionForm.getFirstItemName()));
+
+        LogStep();
+        sectionForm.printRecordsWithDescriptionRegex(descriptionRegex);
     }
 
     @Override
