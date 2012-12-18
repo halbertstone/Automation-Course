@@ -2,12 +2,11 @@ package course.forms;
 
 import org.openqa.selenium.By;
 import webdriver.BaseForm;
+import webdriver.CommonFunctions;
 import webdriver.elements.Label;
 import webdriver.elements.Link;
 
 import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class CatalogSectionForm extends BaseForm {
 
@@ -49,14 +48,12 @@ public class CatalogSectionForm extends BaseForm {
     public ArrayList<String> getRecordsWithDescriptionRegex(final String regex) {
         ArrayList<String> foundProducts = new ArrayList<String>();
         int recordsCount = getNumberOfProductsOnPage();
-        Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
         int i = 1;
         while (i <= recordsCount) {
             Label productDescription = new Label(By.xpath(String.format(productDescriptionLocatorTemplate, i*2)),
                                                  String.format("Description of %1$s product", i));
 
-            Matcher matcher = pattern.matcher(productDescription.getText());
-            if (matcher.find()) {
+            if (CommonFunctions.regexIsMatch(productDescription.getText(), regex)) {
                 Link productName = new Link(By.xpath(String.format(productNameLocatorTemplate, i*2)),
                                             String.format("Link for %1$s product name", i));
                 foundProducts.add(productName.getText());
