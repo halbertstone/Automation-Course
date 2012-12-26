@@ -3,6 +3,8 @@ package course.forms;
 import org.openqa.selenium.By;
 import webdriver.BaseForm;
 import webdriver.CommonFunctions;
+import webdriver.elements.Button;
+import webdriver.elements.CheckBox;
 import webdriver.elements.Label;
 import webdriver.elements.Link;
 
@@ -12,11 +14,13 @@ public class CatalogSectionForm extends BaseForm {
 
     private final Label firstCatalogItem = new Label(By.cssSelector("td[class='pdescr'] strong"),
                                                      "First item in catalog");
+    private final Button compareModels = new Button(By.xpath("//img[@alt='Сравнить модели']"), "Compare models");
 
     // Products locators
-    private final String productRowLocator = "form[name='product_list'] table tr";
-    private final String productNameLocatorTemplate = "//tr[%1$s]//strong//a";
-    private final String productDescriptionLocatorTemplate = "//tr[%1$s]//td[@class='pdescr']/div";
+    protected final String productRowLocator = "form[name='product_list'] table tr";
+    protected final String productNameLocatorTemplate = "//tr[%1$s]//strong//a";
+    protected final String productDescriptionLocatorTemplate = "//tr[%1$s]//td[@class='pdescr']/div";
+    protected final String productCheckboxLocatorTemplate = "//tr[%1$s]//td[@class='pcheck']/input";
 
     protected CatalogSectionForm(final By locator, final String formTitle) {
         super(locator, formTitle);
@@ -71,5 +75,25 @@ public class CatalogSectionForm extends BaseForm {
         for (String productName : getRecordsWithDescriptionRegex(regex)) {
             info(String.format("Product with specific description: %1$s", productName));
         }
+    }
+
+    /**
+     * This method is used for clicking comparison checkbox for product
+     * @param index Index of a product to click
+     */
+    public void checkComparisonCheckbox(final Integer index) {
+        CheckBox comparisonCheckbox = new CheckBox(By.xpath(String.format(productCheckboxLocatorTemplate, index * 2)),
+                String.format("Checkbox for %1$s product", index));
+
+        comparisonCheckbox.check();
+    }
+
+    /**
+     * This method is used for opening Product Comparison page for selected models
+     * @return Object with opened Comparison page
+     */
+    public ComparisonForm openComparisonPage() {
+        compareModels.clickAndWait();
+        return new ComparisonForm();
     }
 }

@@ -4,6 +4,7 @@
         <classes>
             <class name="course.tests.LoginTest" />
             <class name="course.tests.CatalogTest" />
+            <class name="course.tests.ProductComparisonTest" />
         </classes>
     </test>
 </suite>
