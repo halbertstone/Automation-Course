@@ -78,8 +78,10 @@ public class ComparisonForm extends BaseForm {
             Label ratingLabel = new Label(By.xpath(String.format("%1$s[%2$s]", comparisonRatingRowCell, i)),
                     String.format("Label for %1$s product rating", i));
 
-            if (Integer.parseInt(ratingLabel.getText()) > maxRating) {
+            int rating = Integer.parseInt(ratingLabel.getText());
+            if (rating > maxRating) {
                 bestIndex = i;
+                maxRating = rating;
             }
             i++;
         }

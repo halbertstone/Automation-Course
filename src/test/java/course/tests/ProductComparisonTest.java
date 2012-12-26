@@ -32,18 +32,15 @@ public class ProductComparisonTest extends BaseTest {
         //5
         LogStep();
         Map<String,Integer> foundProducts = sectionForm.getRecordsWithDifferentNames();
-
-        //6
-        LogStep();
         for(Integer id : foundProducts.values()) {
             sectionForm.checkComparisonCheckbox(id);
         }
 
-        //7
+        //6
         LogStep();
         ComparisonForm comparisonForm = sectionForm.openComparisonPage();
 
-        //8
+        //7
         LogStep();
         comparisonForm.printBestProductInformation(comparisonForm.findBestProduct());
     }
