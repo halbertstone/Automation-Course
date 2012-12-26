@@ -14,7 +14,7 @@ public class CatalogSectionForm extends BaseForm {
 
     private final Label firstCatalogItem = new Label(By.cssSelector("td[class='pdescr'] strong"),
                                                      "First item in catalog");
-    private final Button compareModels = new Button(By.xpath("//img[@alt='Сравнить модели']"), "Compare models");
+    private final Button compareModels = new Button(By.xpath("//div[@class='pcompbtn']/a"), "Compare models");
 
     // Products locators
     protected final String productRowLocator = "form[name='product_list'] table tr";
