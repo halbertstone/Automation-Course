@@ -1,5 +1,6 @@
 package course.tests;
 
+import course.base.BaseFunctions;
 import course.forms.*;
 import webdriver.BaseTest;
 import webdriver.controller.UserType;
@@ -11,6 +12,8 @@ public class ProductComparisonTest extends BaseTest {
     public UsersController.User user = UsersController.getInstance().getUserByType(UserType.USER);
 
     public void runTest() {
+        BaseFunctions.windowMaximise(browser.getDriver());
+
         //1
         LogStep();
         HomeForm homeForm = new HomeForm();
